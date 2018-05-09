@@ -1,13 +1,14 @@
 package com.powermilk;
 
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class Person {
     private final String name;
     private final int age;
 
-    public Person(final String name, final int age) {
+    Person(final String name, final int age) {
         this.name = name;
         this.age = age;
     }
@@ -22,10 +23,11 @@ public class Person {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(age).append(name).toHashCode();
+        return new HashCodeBuilder().append(age).append(name).build();
     }
 
     @Override
+    @org.jetbrains.annotations.Contract(value = "null -> false", pure = true)
     public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
@@ -40,6 +42,11 @@ public class Person {
         }
 
         final Person person = (Person) obj;
-        return new EqualsBuilder().append(this.age, person.age).append(this.name, person.name).isEquals();
+        return new EqualsBuilder().append(this.age, person.age).append(this.name, person.name).build();
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 }

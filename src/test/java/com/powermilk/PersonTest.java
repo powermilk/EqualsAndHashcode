@@ -18,7 +18,6 @@ import org.slf4j.LoggerFactory;
 class PersonTest {
     private static final Logger log = LoggerFactory.getLogger(PersonTest.class);
 
-
     @BeforeEach
     void init() {
         log.info("Test started!");
@@ -30,7 +29,7 @@ class PersonTest {
     }
 
     @Test
-    public void equalsContract() {
+    void equalsContract() {
         EqualsVerifier.forClass(Person.class)
                 .suppress(Warning.STRICT_INHERITANCE)
                 .usingGetClass()

@@ -1,7 +1,8 @@
 package com.powermilk;
 
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 class Student extends Person {
     private final String school;
@@ -17,7 +18,7 @@ class Student extends Person {
 
     public int hashCode() {
         return new HashCodeBuilder().appendSuper(super.hashCode())
-                .append(school).toHashCode();
+                .append(school).build();
     }
 
     public boolean equals(Object obj) {
@@ -35,6 +36,10 @@ class Student extends Person {
 
         final Student student = (Student) obj;
         return new EqualsBuilder().appendSuper(super.equals(student))
-                .append(this.school, student.school).isEquals();
+                .append(this.school, student.school).build();
+    }
+
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 }
