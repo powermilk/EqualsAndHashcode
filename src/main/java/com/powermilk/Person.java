@@ -5,8 +5,13 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class Person {
-    private final String name;
-    private final int age;
+    final private String name;
+    final private int age;
+
+    Person() {
+        this.name = null;
+        this.age = 0;
+    }
 
     Person(final String name, final int age) {
         this.name = name;

@@ -7,9 +7,14 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 class Student extends Person {
     private final String school;
 
-    public Student(final String name, final int age, final String school) {
+    Student(final String name, final int age, final String school) {
         super(name, age);
         this.school = school;
+    }
+
+    Student() {
+        super(null, 0);
+        this.school = null;
     }
 
     public String getSchool() {
